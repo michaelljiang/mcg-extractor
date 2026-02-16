@@ -1,0 +1,21 @@
+# PDF Processing
+pypdf2==3.0.1
+pdfplumber==0.11.0
+
+# Data Processing
+pyyaml==6.0.1
+jsonschema==4.21.1
+
+# LLM Integration
+google-genai==0.2.1  # NEW package, NOT google-generativeai
+
+# HTTP Requests (for Ollama API)
+requests==2.31.0
+
+# Utilities
+python-dotenv==1.0.0
+tqdm==4.66.1
+
+# Testing
+pytest==8.0.0
+pytest-cov==4.1.0

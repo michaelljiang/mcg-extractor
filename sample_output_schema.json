@@ -1,0 +1,286 @@
+{
+  "schema_version": "1.0",
+  "schema_created": "2026-02-15T10:30:00",
+  "guideline_metadata": {
+    "guideline_id": "mcg_sepsis_and_other_febrile_illness_without_focal_infection",
+    "guideline_name": "Sepsis and Other Febrile Illness without Focal Infection",
+    "org_code": "ORG12345",
+    "version": "27th Edition",
+    "effective_date": "January 1, 2024",
+    "specialty": "Emergency Medicine",
+    "care_setting": "inpatient",
+    "source_document": "MCG Sepsis and Other Febrile Illness, without Focal Infection (1).pdf",
+    "extraction_date": "2026-02-15T10:25:00"
+  },
+  "admission_decision_logic": {
+    "rule_type": "disjunctive",
+    "description": "Patient meets admission criteria if ANY of the following conditions are met",
+    "minimum_criteria_count": 1,
+    "criteria": [
+      {
+        "criterion_id": "criterion_001",
+        "criterion_text": "Hemodynamic instability with systolic blood pressure less than 90 mmHg",
+        "priority": "high",
+        "clinical_category": "hemodynamic",
+        "primary_condition": {
+          "term": "Hemodynamic Instability",
+          "snomed_code": "234171009",
+          "icd10_codes": ["R57.9", "R65.21"],
+          "synonyms": ["Circulatory instability", "Shock", "Cardiovascular collapse"]
+        },
+        "matching_conditions": {
+          "logic_operator": "OR",
+          "description": "Match if any of the following clinical findings are present",
+          "conditions": [
+            {
+              "data_type": "vital_sign",
+              "parameter": "Systolic Blood Pressure",
+              "value": 90,
+              "unit": "mmHg",
+              "operator": "less_than",
+              "loinc_code": "8480-6",
+              "snomed_code": "271649006",
+              "threshold_text": "less than 90 mmHg"
+            },
+            {
+              "data_type": "vital_sign",
+              "parameter": "Mean Arterial Pressure",
+              "value": 65,
+              "unit": "mmHg",
+              "operator": "less_than",
+              "loinc_code": "8478-0",
+              "snomed_code": "6797001",
+              "threshold_text": "less than 65 mmHg"
+            }
+          ]
+        },
+        "qualifiers": {
+          "severity": ["severe"],
+          "temporal": "",
+          "persistence": ""
+        },
+        "dependencies": []
+      },
+      {
+        "criterion_id": "criterion_002",
+        "criterion_text": "Bacteremia, if blood cultures performed",
+        "priority": "high",
+        "clinical_category": "infectious",
+        "primary_condition": {
+          "term": "Bacteremia",
+          "snomed_code": "5758002",
+          "icd10_codes": ["A41.9"],
+          "synonyms": ["Blood stream infection", "Septicemia"]
+        },
+        "matching_conditions": {
+          "logic_operator": "AND",
+          "description": "Match if blood cultures performed AND result is positive",
+          "conditions": [
+            {
+              "data_type": "laboratory",
+              "parameter": "Blood Culture",
+              "value": "positive",
+              "unit": "",
+              "operator": "equals",
+              "loinc_code": "600-7",
+              "snomed_code": "61746007",
+              "threshold_text": "positive result"
+            }
+          ]
+        },
+        "qualifiers": {
+          "severity": [],
+          "temporal": "",
+          "persistence": ""
+        },
+        "dependencies": ["blood cultures performed"]
+      },
+      {
+        "criterion_id": "criterion_003",
+        "criterion_text": "Hypoxemia with oxygen saturation less than 90% despite supplemental oxygen",
+        "priority": "high",
+        "clinical_category": "respiratory",
+        "primary_condition": {
+          "term": "Hypoxemia",
+          "snomed_code": "389086002",
+          "icd10_codes": ["R09.02"],
+          "synonyms": ["Low oxygen level", "Oxygen desaturation", "Hypoxia"]
+        },
+        "matching_conditions": {
+          "logic_operator": "OR",
+          "description": "Match if any of the following oxygen-related findings are present",
+          "conditions": [
+            {
+              "data_type": "vital_sign",
+              "parameter": "Oxygen Saturation",
+              "value": 90,
+              "unit": "%",
+              "operator": "less_than",
+              "loinc_code": "2708-6",
+              "snomed_code": "431314004",
+              "threshold_text": "less than 90%"
+            },
+            {
+              "data_type": "laboratory",
+              "parameter": "Partial Pressure of Oxygen (PaO2)",
+              "value": 60,
+              "unit": "mmHg",
+              "operator": "less_than",
+              "loinc_code": "2703-7",
+              "snomed_code": "250775008",
+              "threshold_text": "less than 60 mmHg"
+            }
+          ]
+        },
+        "qualifiers": {
+          "severity": [],
+          "temporal": "",
+          "persistence": "despite supplemental oxygen"
+        },
+        "dependencies": ["supplemental oxygen administered"]
+      },
+      {
+        "criterion_id": "criterion_004",
+        "criterion_text": "Altered mental status persisting after initial assessment",
+        "priority": "high",
+        "clinical_category": "mental_status",
+        "primary_condition": {
+          "term": "Altered Mental Status",
+          "snomed_code": "419284004",
+          "icd10_codes": ["R41.82"],
+          "synonyms": ["Confusion", "Delirium", "Decreased consciousness", "Altered level of consciousness"]
+        },
+        "matching_conditions": {
+          "logic_operator": "OR",
+          "description": "Match if any mental status alteration is present",
+          "conditions": [
+            {
+              "data_type": "clinical_assessment",
+              "parameter": "Glasgow Coma Scale",
+              "value": 14,
+              "unit": "points",
+              "operator": "less_than",
+              "loinc_code": "9269-2",
+              "snomed_code": "386554000",
+              "threshold_text": "less than 14"
+            },
+            {
+              "data_type": "clinical_finding",
+              "parameter": "Confusion",
+              "value": "present",
+              "unit": "",
+              "operator": "equals",
+              "loinc_code": "",
+              "snomed_code": "40917007",
+              "threshold_text": "present"
+            },
+            {
+              "data_type": "clinical_finding",
+              "parameter": "Delirium",
+              "value": "present",
+              "unit": "",
+              "operator": "equals",
+              "loinc_code": "",
+              "snomed_code": "2776000",
+              "threshold_text": "present"
+            }
+          ]
+        },
+        "qualifiers": {
+          "severity": [],
+          "temporal": "",
+          "persistence": "persisting after initial assessment"
+        },
+        "dependencies": []
+      },
+      {
+        "criterion_id": "criterion_005",
+        "criterion_text": "Tachypnea that persists after observation period",
+        "priority": "medium",
+        "clinical_category": "respiratory",
+        "primary_condition": {
+          "term": "Tachypnea",
+          "snomed_code": "271823003",
+          "icd10_codes": ["R06.82"],
+          "synonyms": ["Rapid breathing", "Increased respiratory rate"]
+        },
+        "matching_conditions": {
+          "logic_operator": "SINGLE",
+          "description": "Match if respiratory rate threshold is exceeded",
+          "conditions": [
+            {
+              "data_type": "vital_sign",
+              "parameter": "Respiratory Rate",
+              "value": 20,
+              "unit": "breaths per minute",
+              "operator": "greater_than",
+              "loinc_code": "9279-1",
+              "snomed_code": "86290005",
+              "threshold_text": "greater than 20 per minute"
+            }
+          ]
+        },
+        "qualifiers": {
+          "severity": [],
+          "temporal": "",
+          "persistence": "persists after observation period"
+        },
+        "dependencies": []
+      },
+      {
+        "criterion_id": "criterion_006",
+        "criterion_text": "Core body temperature less than 95°F (35°C)",
+        "priority": "high",
+        "clinical_category": "vital_signs",
+        "primary_condition": {
+          "term": "Hypothermia",
+          "snomed_code": "386689009",
+          "icd10_codes": ["R68.0"],
+          "synonyms": ["Low body temperature", "Decreased temperature"]
+        },
+        "matching_conditions": {
+          "logic_operator": "SINGLE",
+          "description": "Match if body temperature is below threshold",
+          "conditions": [
+            {
+              "data_type": "vital_sign",
+              "parameter": "Body Temperature",
+              "value": 35,
+              "unit": "degrees Celsius",
+              "operator": "less_than",
+              "loinc_code": "8310-5",
+              "snomed_code": "276885007",
+              "threshold_text": "less than 35°C (95°F)"
+            }
+          ]
+        },
+        "qualifiers": {
+          "severity": [],
+          "temporal": "",
+          "persistence": ""
+        },
+        "dependencies": []
+      }
+    ]
+  },
+  "alternatives_to_admission": [
+    {
+      "alternative_id": "alt_001",
+      "description": "Observation unit placement for up to 24 hours with continuous monitoring",
+      "care_setting": "observation_unit",
+      "requirements": []
+    },
+    {
+      "alternative_id": "alt_002",
+      "description": "Emergency department treatment with close outpatient follow-up within 24 hours",
+      "care_setting": "emergency_department",
+      "requirements": []
+    },
+    {
+      "alternative_id": "alt_003",
+      "description": "Infusion center for intravenous antibiotics with daily reassessment",
+      "care_setting": "infusion_center",
+      "requirements": []
+    }
+  ]
+}

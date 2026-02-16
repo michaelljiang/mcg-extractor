@@ -1,0 +1,640 @@
+{
+  "schema_version": "1.0",
+  "schema_created": "2026-02-15T18:34:13.581502",
+  "guideline_metadata": {
+    "guideline_id": "mcg_health",
+    "guideline_name": "Health",
+    "org_code": "",
+    "version": "29",
+    "effective_date": "",
+    "specialty": "General Medicine",
+    "care_setting": "inpatient",
+    "source_document": "MCG Sepsis and Other Febrile Illness, without Focal Infection (1).pdf",
+    "extraction_date": "2026-02-15T18:31:36.336889"
+  },
+  "admission_decision_logic": {
+    "rule_type": "disjunctive",
+    "description": "Patient meets admission criteria if ANY of the following conditions are met",
+    "minimum_criteria_count": 1,
+    "criteria": [
+      {
+        "criterion_id": "criterion_001",
+        "criterion_text": "Hemodynamic instability (6)(7)(10)(11)",
+        "priority": "high",
+        "clinical_category": "general",
+        "primary_condition": {
+          "term": "unknown",
+          "snomed_code": "",
+          "icd10_codes": [],
+          "synonyms": []
+        },
+        "matching_conditions": {
+          "logic_operator": "OR",
+          "description": "Match based on primary condition: unknown",
+          "conditions": []
+        },
+        "qualifiers": {
+          "severity": [],
+          "temporal": "",
+          "persistence": ""
+        },
+        "dependencies": []
+      },
+      {
+        "criterion_id": "criterion_002",
+        "criterion_text": "Bacteremia (if blood cultures performed)",
+        "priority": "high",
+        "clinical_category": "Laboratory",
+        "primary_condition": {
+          "term": "Bacteremia",
+          "snomed_code": "103210003",
+          "icd10_codes": [
+            "R78.81"
+          ],
+          "synonyms": [
+            "Bloodstream infection",
+            "Presence of bacteria in blood"
+          ]
+        },
+        "matching_conditions": {
+          "logic_operator": "SINGLE",
+          "description": "Match if any of the following clinical findings are present",
+          "conditions": [
+            {
+              "data_type": "laboratory",
+              "parameter": "Blood culture result",
+              "value": "positive",
+              "unit": "",
+              "operator": "equals",
+              "loinc_code": "602-3",
+              "snomed_code": "10828004",
+              "threshold_text": "positive"
+            }
+          ]
+        },
+        "qualifiers": {
+          "severity": [],
+          "temporal": "",
+          "persistence": ""
+        },
+        "dependencies": [
+          "Blood cultures performed"
+        ]
+      },
+      {
+        "criterion_id": "criterion_003",
+        "criterion_text": "Hypoxemia (6)(11)",
+        "priority": "high",
+        "clinical_category": "Respiratory",
+        "primary_condition": {
+          "term": "Hypoxemia",
+          "snomed_code": "409830004",
+          "icd10_codes": [
+            "R09.02"
+          ],
+          "synonyms": [
+            "Low blood oxygen",
+            "Low oxygen saturation",
+            "Decreased arterial oxygen tension"
+          ]
+        },
+        "matching_conditions": {
+          "logic_operator": "OR",
+          "description": "Match if any of the following clinical findings are present",
+          "conditions": [
+            {
+              "data_type": "vital_sign",
+              "parameter": "Peripheral oxygen saturation (SpO2)",
+              "value": 90.0,
+              "unit": "%",
+              "operator": "less_than",
+              "loinc_code": "2708-6",
+              "snomed_code": "431330004",
+              "threshold_text": "90"
+            },
+            {
+              "data_type": "clinical_finding",
+              "parameter": "Partial pressure of oxygen in arterial blood (PaO2)",
+              "value": 60.0,
+              "unit": "mmHg",
+              "operator": "less_than",
+              "loinc_code": "2015-8",
+              "snomed_code": "271600007",
+              "threshold_text": "60"
+            }
+          ]
+        },
+        "qualifiers": {
+          "severity": [
+            "moderate",
+            "severe"
+          ],
+          "temporal": "not specified",
+          "persistence": "not specified"
+        },
+        "dependencies": [
+          "Refer to MCG footnotes (6) and (11) for additional context or specific thresholds/conditions."
+        ]
+      },
+      {
+        "criterion_id": "criterion_004",
+        "criterion_text": "Altered mental status that is severe or persistent [C](7)(11)(12)",
+        "priority": "high",
+        "clinical_category": "Neurological",
+        "primary_condition": {
+          "term": "Altered mental status",
+          "snomed_code": "41400009",
+          "icd10_codes": [
+            "R41.82"
+          ],
+          "synonyms": [
+            "Confusion",
+            "Disorientation",
+            "Delirium",
+            "Change in mental status",
+            "Impaired consciousness",
+            "Encephalopathy"
+          ]
+        },
+        "matching_conditions": {
+          "logic_operator": "SINGLE",
+          "description": "Match if any of the following clinical findings are present",
+          "conditions": [
+            {
+              "data_type": "clinical_assessment",
+              "parameter": "Altered mental status",
+              "value": "present",
+              "unit": "",
+              "operator": "equals",
+              "loinc_code": "",
+              "snomed_code": "41400009",
+              "threshold_text": "present"
+            }
+          ]
+        },
+        "qualifiers": {
+          "severity": [
+            "severe"
+          ],
+          "temporal": "persistent",
+          "persistence": "present"
+        },
+        "dependencies": [
+          "C(7)",
+          "C(11)",
+          "C(12)"
+        ]
+      },
+      {
+        "criterion_id": "criterion_005",
+        "criterion_text": "New coagulopathy (eg, reduced platelet count or new prolonged prothrombin time)[D](13)(14)",
+        "priority": "high",
+        "clinical_category": "Laboratory",
+        "primary_condition": {
+          "term": "Coagulopathy",
+          "snomed_code": "362970003",
+          "icd10_codes": [
+            "D68.9"
+          ],
+          "synonyms": [
+            "Bleeding disorder",
+            "Clotting disorder",
+            "Hemorrhagic diathesis"
+          ]
+        },
+        "matching_conditions": {
+          "logic_operator": "OR",
+          "description": "Match if any of the following clinical findings are present",
+          "conditions": [
+            {
+              "data_type": "laboratory",
+              "parameter": "Platelet count",
+              "value": 150,
+              "unit": "10^9/L",
+              "operator": "less_than",
+              "loinc_code": "777-3",
+              "snomed_code": "1040001",
+              "threshold_text": "150"
+            },
+            {
+              "data_type": "clinical_finding",
+              "parameter": "Prothrombin time",
+              "value": 13.5,
+              "unit": "seconds",
+              "operator": "greater_than",
+              "loinc_code": "5902-2",
+              "snomed_code": "1040401",
+              "threshold_text": "13.5"
+            }
+          ]
+        },
+        "qualifiers": {
+          "severity": [],
+          "temporal": "acute",
+          "persistence": ""
+        },
+        "dependencies": [
+          "Presence of either reduced platelet count OR prolonged prothrombin time."
+        ]
+      },
+      {
+        "criterion_id": "criterion_006",
+        "criterion_text": "Tachypnea that persists despite observation care(10)(11)(15)",
+        "priority": "high",
+        "clinical_category": "Respiratory",
+        "primary_condition": {
+          "term": "Tachypnea",
+          "snomed_code": "271823003",
+          "icd10_codes": [
+            "R06.82"
+          ],
+          "synonyms": [
+            "Rapid breathing",
+            "Increased respiratory rate"
+          ]
+        },
+        "matching_conditions": {
+          "logic_operator": "SINGLE",
+          "description": "Match if any of the following clinical findings are present",
+          "conditions": [
+            {
+              "data_type": "vital_sign",
+              "parameter": "Respiratory rate",
+              "value": 20,
+              "unit": "breaths/minute",
+              "operator": "greater_than",
+              "loinc_code": "9279-1",
+              "snomed_code": "86290005",
+              "threshold_text": "20"
+            }
+          ]
+        },
+        "qualifiers": {
+          "severity": [],
+          "temporal": "persistent",
+          "persistence": "persists despite observation care"
+        },
+        "dependencies": [
+          "Observation care has been provided",
+          "Tachypnea has not resolved with observation care"
+        ]
+      },
+      {
+        "criterion_id": "criterion_007",
+        "criterion_text": "Dehydration that is severe or persistent (16)",
+        "priority": "high",
+        "clinical_category": "Metabolic, Hemodynamic, Fluid and Electrolyte",
+        "primary_condition": {
+          "term": "Dehydration",
+          "snomed_code": "78845003",
+          "icd10_codes": [
+            "E86.0"
+          ],
+          "synonyms": [
+            "Fluid depletion",
+            "Hypovolemia",
+            "Volume depletion"
+          ]
+        },
+        "matching_conditions": {
+          "logic_operator": "OR",
+          "description": "Match if any of the following clinical findings are present",
+          "conditions": [
+            {
+              "data_type": "vital_sign",
+              "parameter": "Systolic Blood Pressure",
+              "value": 90,
+              "unit": "mmHg",
+              "operator": "less_than",
+              "loinc_code": "8480-6",
+              "snomed_code": "",
+              "threshold_text": "90"
+            },
+            {
+              "data_type": "vital_sign",
+              "parameter": "Heart Rate",
+              "value": 100,
+              "unit": "per minute",
+              "operator": "greater_than",
+              "loinc_code": "8867-4",
+              "snomed_code": "",
+              "threshold_text": "100"
+            },
+            {
+              "data_type": "clinical_finding",
+              "parameter": "Capillary Refill Time",
+              "value": 2,
+              "unit": "seconds",
+              "operator": "greater_than",
+              "loinc_code": "85354-9",
+              "snomed_code": "",
+              "threshold_text": "2"
+            },
+            {
+              "data_type": "clinical_assessment",
+              "parameter": "Mental Status",
+              "value": "Altered",
+              "unit": "",
+              "operator": "contains",
+              "loinc_code": "75970-0",
+              "snomed_code": "271786007",
+              "threshold_text": "Altered"
+            },
+            {
+              "data_type": "clinical_finding",
+              "parameter": "Urine Output Rate",
+              "value": 0.5,
+              "unit": "mL/kg/hour",
+              "operator": "less_than",
+              "loinc_code": "",
+              "snomed_code": "",
+              "threshold_text": "0.5"
+            },
+            {
+              "data_type": "laboratory",
+              "parameter": "BUN/Creatinine Ratio",
+              "value": 20,
+              "unit": "ratio",
+              "operator": "greater_than",
+              "loinc_code": "14932-0",
+              "snomed_code": "",
+              "threshold_text": "20"
+            }
+          ]
+        },
+        "qualifiers": {
+          "severity": [
+            "severe"
+          ],
+          "temporal": "persistent",
+          "persistence": "Ongoing signs and symptoms of dehydration despite initial treatment attempts."
+        },
+        "dependencies": [
+          "Dehydration must be either severe OR persistent."
+        ]
+      },
+      {
+        "criterion_id": "criterion_008",
+        "criterion_text": "Inability to maintain oral hydration (eg, needs IV fluid support) that persists after observation care(7)",
+        "priority": "high",
+        "clinical_category": "Metabolic",
+        "primary_condition": {
+          "term": "Inability to maintain oral hydration",
+          "snomed_code": "78377000",
+          "icd10_codes": [
+            "R63.8",
+            "E86.0"
+          ],
+          "synonyms": [
+            "Impaired oral intake",
+            "Poor oral intake",
+            "Difficulty drinking",
+            "Insufficient oral fluid intake",
+            "Oral fluid intake inadequate"
+          ]
+        },
+        "matching_conditions": {
+          "logic_operator": "SINGLE",
+          "description": "Match if any of the following clinical findings are present",
+          "conditions": [
+            {
+              "data_type": "clinical_finding",
+              "parameter": "Receiving intravenous fluids",
+              "value": "true",
+              "unit": "",
+              "operator": "equals",
+              "loinc_code": "",
+              "snomed_code": "428400006",
+              "threshold_text": "true"
+            }
+          ]
+        },
+        "qualifiers": {
+          "severity": [],
+          "temporal": "persistent",
+          "persistence": "after observation care"
+        },
+        "dependencies": [
+          "Inability to maintain oral hydration must persist after a period of observation care."
+        ]
+      },
+      {
+        "criterion_id": "criterion_009",
+        "criterion_text": "Evidence of end organ dysfunction (eg, rising creatinine, myocardial ischemia, rising liver function tests) that is severe or persists despite observation care(6)(7)",
+        "priority": "high",
+        "clinical_category": "Multi-system",
+        "primary_condition": {
+          "term": "End-organ dysfunction",
+          "snomed_code": "237364008",
+          "icd10_codes": [],
+          "synonyms": [
+            "Organ dysfunction",
+            "Organ damage",
+            "Organ failure (early stage)"
+          ]
+        },
+        "matching_conditions": {
+          "logic_operator": "OR",
+          "description": "Match if any of the following clinical findings are present",
+          "conditions": [
+            {
+              "data_type": "laboratory",
+              "parameter": "Creatinine",
+              "value": "significant rise from baseline",
+              "unit": "mg/dL",
+              "operator": "greater_than",
+              "loinc_code": "2160-0",
+              "snomed_code": "165036003",
+              "threshold_text": "significant rise from baseline"
+            },
+            {
+              "data_type": "clinical_finding",
+              "parameter": "Myocardial ischemia",
+              "value": "present",
+              "unit": "",
+              "operator": "equals",
+              "loinc_code": "",
+              "snomed_code": "414020008",
+              "threshold_text": "present"
+            },
+            {
+              "data_type": "clinical_finding",
+              "parameter": "Alanine aminotransferase (ALT)",
+              "value": "significant rise from baseline",
+              "unit": "U/L",
+              "operator": "greater_than",
+              "loinc_code": "1742-6",
+              "snomed_code": "165040007",
+              "threshold_text": "significant rise from baseline"
+            },
+            {
+              "data_type": "clinical_finding",
+              "parameter": "Aspartate aminotransferase (AST)",
+              "value": "significant rise from baseline",
+              "unit": "U/L",
+              "operator": "greater_than",
+              "loinc_code": "1920-8",
+              "snomed_code": "165041006",
+              "threshold_text": "significant rise from baseline"
+            }
+          ]
+        },
+        "qualifiers": {
+          "severity": [
+            "severe"
+          ],
+          "temporal": "persistent",
+          "persistence": "persists despite observation care"
+        },
+        "dependencies": [
+          "persists despite observation care"
+        ]
+      },
+      {
+        "criterion_id": "criterion_010",
+        "criterion_text": "Core (rectal) temperature lower than 95 degrees F (35 degrees C) (eg, thought to be due to infection)(17)",
+        "priority": "high",
+        "clinical_category": "Vital signs",
+        "primary_condition": {
+          "term": "Hypothermia",
+          "snomed_code": "250970003",
+          "icd10_codes": [
+            "R68.0"
+          ],
+          "synonyms": [
+            "Low body temperature",
+            "Subnormal temperature"
+          ]
+        },
+        "matching_conditions": {
+          "logic_operator": "OR",
+          "description": "Match if any of the following clinical findings are present",
+          "conditions": [
+            {
+              "data_type": "vital_sign",
+              "parameter": "Core (rectal) temperature",
+              "value": 95,
+              "unit": "degrees F",
+              "operator": "less_than",
+              "loinc_code": "8329-3",
+              "snomed_code": "87173004",
+              "threshold_text": "95"
+            },
+            {
+              "data_type": "vital_sign",
+              "parameter": "Core (rectal) temperature",
+              "value": 35,
+              "unit": "degrees C",
+              "operator": "less_than",
+              "loinc_code": "8329-3",
+              "snomed_code": "87173004",
+              "threshold_text": "35"
+            }
+          ]
+        },
+        "qualifiers": {
+          "severity": [],
+          "temporal": "",
+          "persistence": ""
+        },
+        "dependencies": []
+      },
+      {
+        "criterion_id": "criterion_011",
+        "criterion_text": "Parenteral antimicrobial regimen that must be implemented on inpatient basis (eg, infusion or monitoring needs beyond capabilities of outpatient parenteral therapy)(18)",
+        "priority": "high",
+        "clinical_category": "Infectious Disease Management",
+        "primary_condition": {
+          "term": "Need for inpatient level of care for parenteral antimicrobial therapy",
+          "snomed_code": "103360003",
+          "icd10_codes": [],
+          "synonyms": [
+            "Inpatient IV antibiotic requirement",
+            "Hospitalization for parenteral antimicrobials",
+            "Parenteral antimicrobial therapy requiring inpatient admission"
+          ]
+        },
+        "matching_conditions": {
+          "logic_operator": "OR",
+          "description": "Match if any of the following clinical findings are present",
+          "conditions": [
+            {
+              "data_type": "clinical_finding",
+              "parameter": "Infusion needs for parenteral antimicrobial therapy",
+              "value": "beyond capabilities of outpatient parenteral therapy",
+              "unit": "",
+              "operator": "equals",
+              "loinc_code": "",
+              "snomed_code": "",
+              "threshold_text": "beyond capabilities of outpatient parenteral therapy"
+            },
+            {
+              "data_type": "clinical_finding",
+              "parameter": "Monitoring needs for parenteral antimicrobial therapy",
+              "value": "beyond capabilities of outpatient parenteral therapy",
+              "unit": "",
+              "operator": "equals",
+              "loinc_code": "",
+              "snomed_code": "",
+              "threshold_text": "beyond capabilities of outpatient parenteral therapy"
+            }
+          ]
+        },
+        "qualifiers": {
+          "severity": [],
+          "temporal": "",
+          "persistence": ""
+        },
+        "dependencies": [
+          "Parenteral antimicrobial regimen is indicated",
+          "Outpatient parenteral therapy (OPAT) is not feasible due to infusion or monitoring needs"
+        ]
+      },
+      {
+        "criterion_id": "criterion_012",
+        "criterion_text": "Isolation indicated that cannot be performed outside hospital setting[E]",
+        "priority": "high",
+        "clinical_category": "Infection Control",
+        "primary_condition": {
+          "term": "Need for Isolation",
+          "snomed_code": "183910003",
+          "icd10_codes": [
+            "Z29.0"
+          ],
+          "synonyms": [
+            "Isolation requirement",
+            "Isolation precautions indicated",
+            "Quarantine requirement"
+          ]
+        },
+        "matching_conditions": {
+          "logic_operator": "SINGLE",
+          "description": "Match if any of the following clinical findings are present",
+          "conditions": [
+            {
+              "data_type": "clinical_finding",
+              "parameter": "Feasibility of isolation outside hospital setting",
+              "value": "not feasible",
+              "unit": "",
+              "operator": "equals",
+              "loinc_code": "",
+              "snomed_code": "",
+              "threshold_text": "not feasible"
+            }
+          ]
+        },
+        "qualifiers": {
+          "severity": [
+            "severe"
+          ],
+          "temporal": "",
+          "persistence": ""
+        },
+        "dependencies": [
+          "Indication for isolation"
+        ]
+      }
+    ]
+  },
+  "alternatives_to_admission": []
+}
