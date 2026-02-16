@@ -8,6 +8,12 @@ debug*.py
 setup.py
 test*.py
 
+# Config and documentation (except README)
+config.yaml
+DELIVERABLES.md
+QUICKSTART.md
+OLLAMA_SETUP.md
+
 # Python
 __pycache__/
 *.py[cod]
