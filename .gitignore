@@ -2,11 +2,13 @@
 
 # Environment variables
 .env
+.env.example
 
 # Debug, setup, and test files
 debug*.py
 setup.py
 test*.py
+list_models*.py
 
 # Config and documentation (except README)
 config.yaml
