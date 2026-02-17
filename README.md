@@ -1,5 +1,7 @@
 # MCG Criteria Extraction System
 
+> **Note:** This documentation was enhanced with AI assistance to improve readability and presentation.
+
 ## Project Overview
 
 The **MCG (Milliman Care Guidelines) Criteria Extraction System** is a production-ready Python application that automatically extracts, structures, and interprets clinical admission criteria from MCG guideline PDFs. This system transforms unstructured PDF content into machine-readable JSON schemas that can be used for automated clinical decision support and patient matching against H&P (History & Physical) documents.

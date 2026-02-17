@@ -1,3 +1,7 @@
+> **Note:** This documentation was enhanced with AI assistance to improve readability and presentation.
+
+---
+
 ### Extraction Pipeline for H&P
 
 #### Stage 1: Document Preprocessing
