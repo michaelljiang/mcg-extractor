@@ -6,9 +6,6 @@ pdfplumber==0.11.0
 pyyaml==6.0.1
 jsonschema==4.21.1
 
-# LLM Integration
-google-genai==0.2.1  # NEW package, NOT google-generativeai
-
 # HTTP Requests (for Ollama API)
 requests==2.31.0
 
