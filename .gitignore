@@ -12,7 +12,6 @@ list_models*.py
 
 # Config and documentation (except README)
 DELIVERABLES.md
-QUICKSTART.md
 OLLAMA_SETUP.md
 sample_output_schema.json
 
