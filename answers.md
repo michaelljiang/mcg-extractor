@@ -542,27 +542,3 @@ This structured format is now ready for matching against MCG criteria.
 
 **Logic:** Dependencies must be evaluated before main criterion.
 
----
-
-
-## Risk Mitigation Summary
-
-**Clinical Safety:**
-1. Validate all extracted values against physiologic plausibility
-2. Flag ambiguous or borderline cases for manual review
-3. Maintain audit trail from source text to matched criteria
-4. Allow clinical override of automated determinations
-
-**Technical Reliability:**
-1. Use regex for structured data (high precision)
-2. Use LLM for narrative text with confidence scoring
-3. Validate LLM output format before accepting
-4. Log all extraction decisions for debugging
-
-**Quality Assurance:**
-1. Data quality checks before matching (completeness, validity)
-2. Confidence scores for each extraction method
-3. Manual review queue for low-confidence or high-stakes cases
-4. Regular validation against gold-standard manual chart reviews
-
----
