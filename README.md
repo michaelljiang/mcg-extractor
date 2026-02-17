@@ -4,7 +4,7 @@
 
 **Quick Links:**
 - 📄 [Sample Output Schema](data/mcg_health.json) - Example of extracted MCG guideline in JSON format
-- 📋 [Clinical Data Extraction Methodology](answers.md) - Detailed documentation on data extraction approach
+- 📋 [Clinical Data Extraction Methodology](answers.md) - Answers to follow-up questions
 
 ## Project Overview
 
