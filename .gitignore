@@ -15,6 +15,7 @@ config.yaml
 DELIVERABLES.md
 QUICKSTART.md
 OLLAMA_SETUP.md
+sample_output_schema.json
 
 # Python
 __pycache__/
