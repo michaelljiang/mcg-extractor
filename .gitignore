@@ -11,7 +11,6 @@ test*.py
 list_models*.py
 
 # Config and documentation (except README)
-config.yaml
 DELIVERABLES.md
 QUICKSTART.md
 OLLAMA_SETUP.md
