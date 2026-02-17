@@ -3,7 +3,7 @@
 > **Note:** This documentation was enhanced with AI assistance to improve readability and presentation.
 
 **Quick Links:**
-- 📄 [Sample Output Schema](data/mcg_health.json) - Example of extracted MCG guideline in JSON format
+- 📄 [Sepsis Criteria JSON](data/mcg_health.json) - Example of extracted MCG guideline in JSON format
 - 📋 [Clinical Data Extraction Methodology](answers.md) - Answers to follow-up questions
 
 ## Project Overview
